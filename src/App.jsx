@@ -25,7 +25,7 @@ function App() {
       const preimetr = (a + b + c) / 2
       const yuza = Math.sqrt(preimetr * (preimetr - a) * (preimetr - c) * (preimetr - b))
       setNatija(yuza)
-      setUmummiy(prev => [...prev, { id: prev.length + 1, val: yuza }]);
+      setUmummiy(prev => [...prev, { id: prev.length + 1, val: yuza, i: a, j: b, k: c }]);
     } else {
       alert('tomonlariga qaraganda bu uchburchak shartini bajara olmaydi')
     }
@@ -80,7 +80,7 @@ function App() {
             return <div key={item.id} className='d-flex align-item-center justify-content-between mb-3'>
               <div className='d-flex align-items-center '>
                 <h2 className='mb-0 me-3'>S{item.id}:</h2>
-                <p className='mb-0'>{item.val}</p>
+                <p className='mb-0'>{item.i}*{item.j}*{item.k}={item.val}</p>
               </div>
               <button className='btn btn-danger' onClick={() => Remove(item.id)} >O'chirish</button>
             </div>
