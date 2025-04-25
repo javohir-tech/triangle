@@ -8,7 +8,19 @@ function App() {
   console.log(a)
   console.log(b)
   console.log(c)
-  const [natija, setNatija] = useState(0)
+  const [natija, setNatija] = useState(0);
+  const [umummiy, setUmummiy] = useState([])
+  const [result , setResult] = useState(0)
+  console.log(umummiy)
+
+  const yuzaniHammasi = () => {
+    let result = 0;
+    
+    for(let i=0; i<umummiy.length; i++){
+      result+=umummiy[i]
+    }
+    setResult(result)
+  }
 
   const canculate = (e) => {
     if (a + b > c && a + c > b && c + b > a) {
@@ -16,17 +28,18 @@ function App() {
       const preimetr = (a + b + c) / 2
       const yuza = Math.sqrt(preimetr * (preimetr - a) * (preimetr - c) * (preimetr - b))
       setNatija(yuza)
-    }else{
+      umummiy.push(yuza)
+    } else {
       alert('tomonlariga qaraganda bu uchburchak shartini bajara olmaydi')
     }
   }
   // const canculate = (e) => {
   //   e.preventDefault();
-  
+
   //   const realA = a * 500;
   //   const realB = b * 500;
   //   const realC = c * 500;
-  
+
   //   if (realA + realB > realC && realA + realC > realB && realC + realB > realA) {
   //     const p = (realA + realB + realC) / 2;
   //     const yuzaSm = Math.sqrt(p * (p - realA) * (p - realB) * (p - realC));
@@ -36,7 +49,7 @@ function App() {
   //     alert('Tomonlar bu uchburchakni tashkil eta olmaydi');
   //   }
   // };
-  
+
   console.log(natija)
 
   return (
@@ -61,6 +74,16 @@ function App() {
           <button className='btn btn-primary mt-3' type='submit'>Hisoblash</button>
         </form>
         <h1 className='text-center mt-3'>Natija : {natija}</h1>
+
+        <div className='mt-3'>
+          {umummiy.map((item) => {
+            return <span className='mb-3 me-3'>{item}</span>
+          })}
+        </div>
+        <button className='btn btn-primary w-100' onClick={yuzaniHammasi}>barcha yuzani hisobla</button>
+        <div className='mt-3'>
+          <h1>{result}</h1>
+        </div>
       </div>
     </>
   )
