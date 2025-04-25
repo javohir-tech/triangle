@@ -76,14 +76,16 @@ function App() {
         <h1 className='text-center mt-3'>Natija : {natija}</h1>
 
         <div className='mt-3'>
+          <p>Yuzalar: </p>
           {umummiy.map((item) => {
-            return <span className='mb-3 me-3'>{item}</span>
+            return <p className='mb-3 me-3'>{item}</p>
           })}
         </div>
         <button className='btn btn-primary w-100' onClick={yuzaniHammasi}>barcha yuzani hisobla</button>
         <div className='mt-3'>
           <h1>{result}</h1>
         </div>
+        <button className='btn btn-danger w-100' onClick={()=>{setUmummiy([])}}>Tozala</button>
       </div>
     </>
   )
