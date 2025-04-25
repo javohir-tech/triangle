@@ -5,19 +5,16 @@ function App() {
   const [a, setBirinchi] = useState(0);
   const [b, setIkkinchi] = useState(0);
   const [c, setUchinchi] = useState(0)
-  console.log(a)
-  console.log(b)
-  console.log(c)
   const [natija, setNatija] = useState(0);
   const [umummiy, setUmummiy] = useState([])
-  const [result , setResult] = useState(0)
+  const [result, setResult] = useState(0)
   console.log(umummiy)
 
   const yuzaniHammasi = () => {
     let result = 0;
-    
-    for(let i=0; i<umummiy.length; i++){
-      result+=umummiy[i]
+
+    for (let i = 0; i < umummiy.length; i++) {
+      result += umummiy[i].val
     }
     setResult(result)
   }
@@ -28,10 +25,14 @@ function App() {
       const preimetr = (a + b + c) / 2
       const yuza = Math.sqrt(preimetr * (preimetr - a) * (preimetr - c) * (preimetr - b))
       setNatija(yuza)
-      umummiy.push(yuza)
+      setUmummiy(prev => [...prev, { id: prev.length + 1, val: yuza }]);
     } else {
       alert('tomonlariga qaraganda bu uchburchak shartini bajara olmaydi')
     }
+  }
+
+  const Remove = (id) => {
+    setUmummiy(prev => prev.filter(item => item.id !== id))
   }
   // const canculate = (e) => {
   //   e.preventDefault();
@@ -49,8 +50,6 @@ function App() {
   //     alert('Tomonlar bu uchburchakni tashkil eta olmaydi');
   //   }
   // };
-
-  console.log(natija)
 
   return (
     <>
@@ -78,14 +77,20 @@ function App() {
         <div className='mt-3'>
           <p>Yuzalar: </p>
           {umummiy.map((item) => {
-            return <p className='mb-3 me-3'>{item}</p>
+            return <div key={item.id} className='d-flex align-item-center justify-content-between mb-3'>
+              <div className='d-flex align-items-center '>
+                <h2 className='mb-0 me-3'>S{item.id}:</h2>
+                <p className='mb-0'>{item.val}</p>
+              </div>
+              <button className='btn btn-danger' onClick={() => Remove(item.id)} >O'chirish</button>
+            </div>
           })}
         </div>
         <button className='btn btn-primary w-100' onClick={yuzaniHammasi}>barcha yuzani hisobla</button>
         <div className='mt-3'>
           <h1>{result}</h1>
         </div>
-        <button className='btn btn-danger w-100' onClick={()=>{setUmummiy([])}}>Tozala</button>
+        <button className='btn btn-danger w-100' onClick={() => { setUmummiy([]) }}>Tozala</button>
       </div>
     </>
   )
