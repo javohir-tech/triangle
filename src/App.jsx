@@ -25,7 +25,7 @@ function App() {
       const preimetr = (a + b + c) / 2
       const yuza = Math.sqrt(preimetr * (preimetr - a) * (preimetr - c) * (preimetr - b))
       setNatija(yuza)
-      setUmummiy(prev => [...prev, { id: prev.length + 1, val: yuza, i: a, j: b, k: c }]);
+      setUmummiy(prev => [...prev, { id: prev.length + 1, val:Number(yuza.toFixed(3)) , i: a, j: b, k: c }]);
     } else {
       alert('tomonlariga qaraganda bu uchburchak shartini bajara olmaydi')
     }
