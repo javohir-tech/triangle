@@ -10,32 +10,32 @@ function App() {
   console.log(c)
   const [natija, setNatija] = useState(0)
 
-  // const canculate = (e) => {
-  //   if (a + b > c && a + c > b && c + b > a) {
-  //     e.preventDefault()
-  //     const preimetr = (a + b + c) / 2
-  //     const yuza = Math.sqrt(preimetr * (preimetr - a) * (preimetr - c) * (preimetr - b))
-  //     setNatija(yuza*25)
-  //   }else{
-  //     alert('tomonlariga qaraganda bu uchburchak shartini bajara olmaydi')
-  //   }
-  // }
   const canculate = (e) => {
-    e.preventDefault();
-  
-    const realA = a * 500;
-    const realB = b * 500;
-    const realC = c * 500;
-  
-    if (realA + realB > realC && realA + realC > realB && realC + realB > realA) {
-      const p = (realA + realB + realC) / 2;
-      const yuzaSm = Math.sqrt(p * (p - realA) * (p - realB) * (p - realC));
-      const yuzaM = yuzaSm / 10000; // sm² -> m²
-      setNatija(yuzaM);
-    } else {
-      alert('Tomonlar bu uchburchakni tashkil eta olmaydi');
+    if (a + b > c && a + c > b && c + b > a) {
+      e.preventDefault()
+      const preimetr = (a + b + c) / 2
+      const yuza = Math.sqrt(preimetr * (preimetr - a) * (preimetr - c) * (preimetr - b))
+      setNatija(yuza)
+    }else{
+      alert('tomonlariga qaraganda bu uchburchak shartini bajara olmaydi')
     }
-  };
+  }
+  // const canculate = (e) => {
+  //   e.preventDefault();
+  
+  //   const realA = a * 500;
+  //   const realB = b * 500;
+  //   const realC = c * 500;
+  
+  //   if (realA + realB > realC && realA + realC > realB && realC + realB > realA) {
+  //     const p = (realA + realB + realC) / 2;
+  //     const yuzaSm = Math.sqrt(p * (p - realA) * (p - realB) * (p - realC));
+  //     const yuzaM = yuzaSm / 10000; // sm² -> m²
+  //     setNatija(yuzaM);
+  //   } else {
+  //     alert('Tomonlar bu uchburchakni tashkil eta olmaydi');
+  //   }
+  // };
   
   console.log(natija)
 
